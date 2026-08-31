@@ -3,9 +3,15 @@ FROM docker.io/grimmory/grimmory:v3.3.3
 COPY <<EOF /usr/local/bin/entrypoint-env.sh
 #!/bin/sh
 
+apk add jq
+
 cat /data/options.json
 
-exec /usr/local/bin/entrypoint.sh $@
+for i in $(cat /data/options.json | jq -r '.|to_entries|map("\(.key)=\(.value|tostring)")|.[]'); do
+    export $i;
+done
+
+exec "/usr/local/bin/entrypoint.sh" "$@"
 EOF
 
 RUN chmod +x /usr/local/bin/entrypoint-env.sh
