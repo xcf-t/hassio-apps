@@ -9,6 +9,8 @@ echo "DATABASE_URL is set"
 exec /usr/local/bin/entrypoint.sh $@
 EOF
 
+RUN chmod +x /usr/local/bin/entrypoint-env.sh
+
 # Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
