@@ -15,6 +15,8 @@ ports_description:
   6060/tcp: Grimmory Web interface
 map:
   - addon_config:rw
+environment:
+  GRIMMORY_PORT: "6060"
 options:
   TZ: Etc/UTC
   DATABASE_URL: "jdbc:mariadb://core-mariadb:3306/grimmory?useUnicode=true&characterEncoding=utf8mb4"

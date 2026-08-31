@@ -1,5 +1,14 @@
 FROM docker.io/grimmory/grimmory:v3.3.3
 
+COPY <<EOF /usr/local/bin/entrypoint-env.sh
+
+export DATABASE_URL="$(bashio::config 'DATABASE_URL')"
+
+echo "DATABASE_URL is set"
+
+exec /usr/local/bin/entrypoint.sh $@
+EOF
+
 # Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
@@ -26,5 +35,7 @@ LABEL \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION}
+
+ENTRYPOINT [ "/usr/local/bin/entrypoint-env.sh" ]
 
 EXPOSE 6060
