@@ -5,9 +5,11 @@ COPY <<EOF /usr/local/bin/entrypoint-env.sh
 
 apk add jq
 
+echo "$@"
 cat /data/options.json
 
 for i in $(cat /data/options.json | jq -r '.|to_entries|map("\(.key)=\(.value|tostring)")|.[]'); do
+    echo $i;
     export $i;
 done
 
