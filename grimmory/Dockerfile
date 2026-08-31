@@ -48,5 +48,6 @@ LABEL \
     org.opencontainers.image.version=${BUILD_VERSION}
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint-env.sh" ]
+CMD ["java" "--enable-native-access=ALL-UNNAMED" "--enable-preview" "-jar" "/app/app.jar"]
 
 EXPOSE 6060
