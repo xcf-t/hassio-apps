@@ -1,6 +1,6 @@
 FROM docker.io/grimmory/grimmory:v3.3.3
 
-COPY <<EOF /usr/local/bin/entrypoint-env.sh
+COPY <<'EOF' /usr/local/bin/entrypoint-env.sh
 #!/bin/sh
 
 apk add jq
