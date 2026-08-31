@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.4.0
 ###############################################################################
 # Get prebuilt containers from Vaultwarden
 ###############################################################################
-FROM "vaultwarden/server:1.37.2" AS vaultwarden
+FROM vaultwarden/server:1.37.2 AS vaultwarden
 
 ###############################################################################
 # Build the actual app.
@@ -56,10 +56,10 @@ LABEL \
     maintainer="Pascal K. <hello@lambdaxcf.com>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Home Assistant Community Apps" \
+    org.opencontainers.image.vendor="Home Assistant Custom Apps" \
     org.opencontainers.image.authors="Franck Nijhof <opensource@frenck.dev>" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://frenck.dev/home-assistant-apps" \
+    org.opencontainers.image.url="https://github.com/xcf-t/hassio-apps" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \

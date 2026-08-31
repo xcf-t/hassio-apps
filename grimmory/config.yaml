@@ -1,0 +1,33 @@
+---
+name: Grimmory Server
+version: dev
+slug: grimmory
+description: Open source book manager
+url: https://github.com/xcf-t/hassio-apps
+webui: "http://[HOST]:[PORT:6060]"
+init: false
+arch:
+  - aarch64
+  - amd64
+ports:
+  6060/tcp: 6060
+ports_description:
+  6060/tcp: Grimmory Web interface
+map:
+  - addon_config:rw
+options:
+  TZ: Etc/UTC
+  DATABASE_URL: "jdbc:mariadb://core-mariadb:3306/grimmory?useUnicode=true&characterEncoding=utf8mb4"
+  DATABASE_USERNAME: grimmory
+  DATABASE_PASSWORD: your_secure_password
+  SWAGGER_ENABLED: "false"
+  APP_PATH_CONFIG: /config/data
+  APP_BOOKDROP_FOLDER: /config/bookdrop
+schema:
+  TZ: str
+  DATABASE_URL: str
+  DATABASE_USERNAME: str
+  DATABASE_PASSWORD: password
+  SWAGGER_ENABLED: str
+  APP_PATH_CONFIG: str
+  APP_BOOKDROP_FOLDER: str
