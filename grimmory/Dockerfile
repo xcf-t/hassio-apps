@@ -5,13 +5,7 @@ COPY <<'EOF' /usr/local/bin/entrypoint-env.sh
 
 apk add jq
 
-echo "AT" "$@"
-cat /data/options.json
-
-cat /data/options.json | jq -r '.|to_entries|map("\(.key)=\(.value|tostring)")|.[]'
-
 for i in $(cat /data/options.json | jq -r '.|to_entries|map("\(.key)=\(.value|tostring)")|.[]'); do
-    echo $i;
     export $i;
 done
 
@@ -48,6 +42,6 @@ LABEL \
     org.opencontainers.image.version=${BUILD_VERSION}
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint-env.sh" ]
-CMD ["java" "--enable-native-access=ALL-UNNAMED" "--enable-preview" "-jar" "/app/app.jar"]
+CMD ["java", "--enable-native-access=ALL-UNNAMED", "--enable-preview", "-jar", "/app/app.jar"]
 
 EXPOSE 6060
