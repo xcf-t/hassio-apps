@@ -1,4 +1,4 @@
-FROM docker.io/grimmory/grimmory:v3.3.3
+FROM docker.io/grimmory/grimmory:v3.5.1
 
 COPY <<'EOF' /usr/local/bin/entrypoint-env.sh
 #!/bin/sh
