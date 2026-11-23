@@ -1,6 +1,6 @@
 ---
 name: Grimmory Server
-version: dev
+version: 3.5.1
 slug: grimmory
 description: Open source book manager
 url: https://github.com/xcf-t/hassio-apps
